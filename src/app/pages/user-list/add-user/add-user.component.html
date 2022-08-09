@@ -1,0 +1,57 @@
+<div class="container">
+    <h2 mat-dialog-title>{{title}}</h2>
+    <hr class="solid" >
+    <form class="form-group"  (ngSubmit)="submit()" [formGroup]="addForm">
+        <mat-form-field>
+            <label class="form-label"> Name:</label>
+            <input placeholder="Course Name" formControlName="Name" class="form-control"  >
+            <div *ngIf="addForm.controls['Name'].touched && addForm.controls['Name'].invalid" class="text-red">
+                <div *ngIf="addForm.controls['Name'].errors && addForm.controls['Name'].errors['required']">Name is required.</div>
+            </div>
+            <label class="form-label mt-3"> Email:</label>
+            <input placeholder="Course Email" formControlName="Email" class="form-control"  >
+            <div *ngIf="isEmailError" class="text-red">
+                {{EmailError}}
+            </div>
+
+            <label class="form-label mt-3"> Phone Number:</label>
+            <input placeholder="Course PhoneNumber" formControlName="PhoneNumber" class="form-control"  >
+            <div *ngIf="addForm.controls['PhoneNumber'].touched && addForm.controls['PhoneNumber'].invalid" class="text-red">
+            </div>
+
+            <label class="form-label mt-3"> Username:</label>
+            <input placeholder="Course Username" formControlName="Username" class="form-control"  >
+            <div *ngIf="addForm.controls['Username'].touched && addForm.controls['Username'].invalid" class="text-red">
+                <div *ngIf="addForm.controls['Username'].errors && addForm.controls['Username'].errors['required']">Username is required.</div>
+            </div>
+            <div *ngIf="isUsernameError" class="text-red">
+                {{UsernameError}}
+            </div>
+
+            <label class="form-label mt-3"> Password:</label>
+            <input placeholder="Course Password" type="password" formControlName="Password" class="form-control"  >
+            <div *ngIf="addForm.controls['Password'].touched && addForm.controls['Password'].invalid" class="text-red">
+                <div *ngIf="addForm.controls['Password'].errors && addForm.controls['Password'].errors['required']">Password is required.</div>
+            </div>
+
+            <label class="form-label mt-3"> Password Confirmation:</label>
+            <input placeholder="Course PasswordConfirmation" type="password" formControlName="PasswordConfirmation" class="form-control"  >
+            <div *ngIf="addForm.controls['PasswordConfirmation'].touched && addForm.controls['PasswordConfirmation'].invalid" class="text-red">
+                <div *ngIf="addForm.controls['PasswordConfirmation'].errors && addForm.controls['PasswordConfirmation'].errors['required']">Password Confirmation is required.</div>
+            </div>
+        </mat-form-field>
+
+    <mat-dialog-actions>
+        <div class="mt-3 row clearfix">
+            <div class="ml-2">
+                <button [disabled]='!addForm.valid' type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i 
+                    class="fe fe-plus mr-2" ></i>Add</button>
+            </div>
+            <div class="ml-2">
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" (click)="close()"><i class="fe fe-x mr-2"></i>Cancel</button>
+            </div>      
+        </div>
+    </mat-dialog-actions>
+    </form>
+</div>
+

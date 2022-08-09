@@ -1,0 +1,37 @@
+
+.confirm-dialog-container .mat-dialog-container {
+    border-radius: .25em .25em .4em .4em;
+    padding: 0px;
+}
+.confirm-dialog-container .content-container{
+    display: flex;
+}
+.confirm-dialog-container #close-icon{
+    margin-left: auto;
+    order: 2;
+}
+.confirm-dialog-container #close-icon:hover{
+    cursor: pointer;
+}
+
+.btn-primary{
+    height: 45px;
+    width: 45%;
+    background-color:#8f9cb5;
+    color:white;
+    border-radius: 30px;
+}
+
+.btn-danger{
+    height: 45px;
+    width: 45%;
+    background-color: #F22828;
+    color:white;
+    border-radius: 30px;
+}
+
+.confirm-dialog-container span.content-span{
+    padding:  35px 16px;
+    text-align: center;
+    font-size: 25px;
+}

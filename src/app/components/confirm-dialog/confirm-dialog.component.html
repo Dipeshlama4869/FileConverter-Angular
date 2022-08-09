@@ -1,0 +1,12 @@
+<div class="confirm-dialog-container">
+    <div class="content-container">
+        <a id="close-icon" (click)="closeDialog()" ><i class="fa fa-remove" ></i></a>
+        <span class="content-span full-width">{{data.message}}</span>
+    </div>
+    <div class="button-div full-width d-flex justify-content-between" >
+        <button mat-flat-button id="no-button" class="btn btn-primary" [mat-dialog-close]="false">No</button>
+        <button mat-flat-button id="yes-button" class="btn btn-danger" [mat-dialog-close]="true">Yes</button>
+    </div>
+
+</div>
+

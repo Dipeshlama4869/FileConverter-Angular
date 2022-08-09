@@ -1,0 +1,81 @@
+<div id="header_top" class="header_top dark">
+  <div class="container">
+    <div class="hleft">
+      <a class="header-brand" [routerLink]="['/hr-dashboard']" href="javascript:void(0)">
+        <i class="fe fe-command brand-logo"></i>
+      </a>
+      <div class="dropdown">
+        <a [routerLink]="['/search']" href="javascript:void(0)" class="nav-link icon"><i class="fa fa-search"></i></a>
+        <a [routerLink]="['/calender']" href="javascript:void(0)" class="nav-link icon app_inbox"><i
+            class="fa fa-calendar"></i></a>
+        <a [routerLink]="['/contacts']" href="javascript:void(0)" class="nav-link icon xs-hide"><i
+            class="fa fa-id-card-o"></i></a>
+        <a [routerLink]="['/chat']" href="javascript:void(0)" class="nav-link icon xs-hide"><i
+            class="fa fa-comments-o"></i></a>
+        <a [routerLink]="['/filemanager']" href="javascript:void(0)" class="nav-link icon app_file xs-hide"><i
+            class="fa fa-folder-o"></i></a>
+      </div>
+    </div>
+    <div class="hright">
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="nav-link user_btn" (click)="toggleUserMenu()"><img class="avatar"
+            src="../assets/images/user.png" alt="" data-toggle="tooltip" data-placement="right" title="User Menu" /></a>
+        <a href="javascript:void(0)" (click)="toggleMenu()" class="nav-link icon menu_toggle"><i
+            class="fa  fa-align-left"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="user_div">
+  <h5 class="brand-name mb-4">Epic HR<a href="javascript:void(0)" (click)="toggleUserMenu()" class="user_btn">
+      <i class="icon-logout"></i></a>
+  </h5>
+  <div class="card">
+    <div class="card-body">
+      <div class="media">
+        <img class="avatar avatar-xl mr-3" src="../assets/images/sm/avatar1.jpg" alt="avatar">
+        <div class="media-body">
+          <h5 class="m-0">Sara Hopkins</h5>
+          <p class="text-muted mb-0">Webdeveloper</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="left-sidebar" class="sidebar ">
+  <h5 class="brand-name">Epic</h5>
+  <nav id="left-sidebar-nav" class="sidebar-nav">
+    <ul class="metismenu">
+      <li class="g_heading">Menu</li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/dashboard']" href="javascript:void(0)">
+          <i class="icon-tag"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a href="javascript:void(0)" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseBasic" class="has-arrow arrow-c">
+          <i class="icon-rocket"></i>
+          <span>Master</span>
+        </a>
+        <ul class="collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="submenu list-c" [routerLink]="['/user']" href="javascript:void(0)">
+              <span>Users</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="g_heading">Not Collapsable Menu</li>
+      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a [routerLink]="['/icon-fontawesome']" href="javascript:void(0)">
+          <i class="icon-tag"></i>
+          <span>Icons</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,30 @@
+<div class="card ml-5">
+    <div class="title text-center">
+        <h2>Patanjali HRMS</h2>
+    </div>
+    <form (ngSubmit)="login()" class="card-body">
+        <div class="card-title">Login to your account</div>
+            <label class="form-label">Username</label>
+            <input 
+                name="username"
+                [(ngModel)]="model.username"
+                type="text" 
+                class="form-control"
+                placeholder="Enter Username"
+            >
+            <label class="form-label">Password</label>
+            <input 
+                name="password"
+                [(ngModel)]="model.password"
+                type="password" 
+                class="form-control"
+                placeholder="Enter Password"
+            >
+        <div class="text-red" *ngIf="isError">
+            {{errorMessage}}
+        </div>
+        <div class="form-footer">
+            <button class="btn btn-primary" type="submit">Sign In</button>
+        </div>
+    </form>
+</div>

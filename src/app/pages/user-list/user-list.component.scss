@@ -1,0 +1,32 @@
+table{
+    width: 100%;
+    border-spacing: 0 8px !important;
+}
+
+.Edit button{
+    border-radius: 15px;
+    background-color: #DCD023;
+}
+.Delete button{
+    border-radius: 15px;
+    background-color: #ED4D4D;
+}
+.View button{
+    border-radius: 15px;
+    background-color: #36A9EC;
+}
+
+.btn-icon:not([disabled]):hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+    transform: translate3d(0, -1px, 0)
+}
+
+.btn-primary:not([disabled]):hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+    transform: translate3d(0, -1px, 0)
+}
+
+mat-paginator{
+   border-bottom-left-radius: 10px; 
+   border-bottom-right-radius: 10px;
+}
