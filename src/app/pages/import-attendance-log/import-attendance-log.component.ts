@@ -1,9 +1,12 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { ImportLog } from 'src/app/_models/importLog';
 import { ImportLogService } from 'src/app/_services/import-log.service';
@@ -15,6 +18,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./import-attendance-log.component.scss']
 })
 export class ImportAttendanceLogComponent implements OnInit {
+  hasBaseDropZoneOver = false;
+  uploader!: FileUploader;
   blob!: Blob;
   convert: string = "converted";
   upload: string = "uploaded";
@@ -42,7 +47,7 @@ export class ImportAttendanceLogComponent implements OnInit {
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
-  constructor(private importLogService: ImportLogService, private _liveAnnouncer: LiveAnnouncer, private toastr: ToastrService) { }
+  constructor(private fb: FormBuilder, private importLogService: ImportLogService, private _liveAnnouncer: LiveAnnouncer, private toastr: ToastrService) { }
 
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -76,7 +81,48 @@ export class ImportAttendanceLogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initializeUploader();
     this.loadData();
+  }
+
+  
+  initializeUploader() {
+    this.uploader = new FileUploader({
+      url: this.baseUrl + 'ImportAttendanceLogs/import',
+      headers: [{name: 'Authorization', value: 'Bearer '+ JSON.parse(localStorage.getItem('user') || '{}').Token}],
+      itemAlias: 'Files',
+      isHTML5: true,
+      removeAfterUpload: true,
+      autoUpload: false,
+      maxFileSize: 10 * 1024 * 1024
+    });
+
+    console.log(this.uploader)
+
+    this.uploader.onAfterAddingFile = (file) => {
+      file.withCredentials = false;
+    }
+
+    this.uploader.onCompleteItem = (item, response, status, headers) => {
+      if (response) {
+        let result = JSON.parse(response);
+        console.log(result)
+        if(result.File){
+          this.isError = !this.isError;
+          this.errorMessage = result.File[0];
+        }
+        console.log(result.Errors)
+        if(result.Errors){
+          this.isError = !this.isError;
+          this.errorMessage = result.Errors[0];
+        }
+        this.ngOnInit();
+      }
+    }
+  }
+
+  fileOverBase(e: any) {
+    this.hasBaseDropZoneOver = e;
   }
 
   loadData() {
@@ -130,19 +176,26 @@ export class ImportAttendanceLogComponent implements OnInit {
   }
 
   onUpload() {
-      console.log(this.formData)
-      this.importLogService.upload(this.formData).subscribe(
+      for(let index = 0; index < this.uploader.queue.length; index++) {
+        let data = new FormData();
+        const element = this.uploader.queue[index]._file;
+        data.append('Files', element);
+        console.log(data)
+        this.importLogService.upload(data).subscribe(
           (d) => {
             this.toastr.success("Imported Succesfully");
             this.ngOnInit();
           },
           (error) => {
-            this.isError = !this.isError;
-            error.error.File.map((error: any) => {
-              this.errorMessage = error;
-            })
+            // this.isError = !this.isError;
+            // error.error.File.map((error: any) => {
+            //   this.errorMessage = error;
+            // })
+            console.log(error)
           }
       );
+      }
+
   }
 
   convertFile(id: number) {
@@ -176,6 +229,7 @@ export class ImportAttendanceLogComponent implements OnInit {
     this.importLogService.reUpload(id).subscribe(
       res => {
         console.log(res);
+        this.ngOnInit();
       },
       error => {
         console.log(error)

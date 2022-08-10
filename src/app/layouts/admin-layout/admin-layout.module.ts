@@ -24,6 +24,7 @@ import { AddUserComponent } from 'src/app/pages/user-list/add-user/add-user.comp
 import { EditUserComponent } from 'src/app/pages/user-list/edit-user/edit-user.component';
 import { ViewUserComponent } from 'src/app/pages/user-list/view-user/view-user.component';
 import { ImportAttendanceLogComponent } from 'src/app/pages/import-attendance-log/import-attendance-log.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 export const MY_DATE_FORMATS ={
   parse: {
@@ -48,6 +49,7 @@ export const MY_DATE_FORMATS ={
     ImportAttendanceLogComponent,
   ],
   imports: [
+    FileUploadModule,
     MatSortModule,
     MatNativeDateModule,
     MatDatepickerModule,
@@ -69,6 +71,9 @@ export const MY_DATE_FORMATS ={
 
     //Others
     CountToModule,
+  ],
+  exports: [
+    FileUploadModule,
   ],
 
   providers: [

@@ -63,6 +63,13 @@
         </a>
         <ul class="collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
           <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="submenu list-c" [routerLink]="['/import-attendance-log']" href="javascript:void(0)">
+              <span>Import log</span>
+            </a>
+          </li>
+        </ul>
+        <ul *ngIf="isAdmin" class="collapse" id="collapseBasic" [collapse]="isCollapsed" [isAnimated]="true">
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
             <a class="submenu list-c" [routerLink]="['/user']" href="javascript:void(0)">
               <span>Users</span>
             </a>

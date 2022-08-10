@@ -20,6 +20,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+
   ],
   imports: [
     MatSortModule,
@@ -35,7 +36,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    BsDatepickerModule],
+    BsDatepickerModule, 
+  ],
   bootstrap: [AppComponent],
 
 

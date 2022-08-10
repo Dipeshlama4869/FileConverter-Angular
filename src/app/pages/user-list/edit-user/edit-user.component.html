@@ -38,6 +38,7 @@
             <input placeholder="Course PasswordConfirmation" type="password" formControlName="PasswordConfirmation" class="form-control"  >
             <div *ngIf="editForm.controls['PasswordConfirmation'].touched && editForm.controls['PasswordConfirmation'].invalid" class="text-red">
                 <div *ngIf="editForm.controls['PasswordConfirmation'].errors && editForm.controls['PasswordConfirmation'].errors['required']">Password Confirmation is required.</div>
+                <div *ngIf="editForm.controls['PasswordConfirmation'].errors && editForm.controls['PasswordConfirmation'].errors['matching']">Password does not match.</div>
             </div>
         </mat-form-field>
 

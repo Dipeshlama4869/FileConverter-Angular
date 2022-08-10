@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   addUser(model: Register){
-    return this.http.post(this.baseUrl+ '/Users' , model)
+    return this.http.post(this.baseUrl+ 'Users' , model)
   }
 
   updateUser(id: number, model: Register){

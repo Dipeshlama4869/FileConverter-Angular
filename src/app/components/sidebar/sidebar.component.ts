@@ -8,11 +8,19 @@ import { AppComponent } from 'src/app/app.component';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+  isAdmin = false;
   isCollapsed = true;
 
   constructor(private router: Router, @Inject(AppComponent) private app: AppComponent) {
     if ((this.router.url).includes('hr')) {
       this.isCollapsed = false;
+    }
+
+    if(JSON.parse(localStorage.getItem('user') || '{}').Role.includes("Admin")){
+      this.isAdmin = true;
+      console.log("success")
+    }else{
+      console.log("fail")
     }
   }
 

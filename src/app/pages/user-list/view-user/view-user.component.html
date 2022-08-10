@@ -5,7 +5,7 @@
         <div class="card-body">
             <div class="widgets1">
                 <div class="icon">
-                    <i class="fe fe-clipboard text-success font-30"></i>
+                    <i class="fa fa-user text-success font-30"></i>
                 </div>
                 <div class="details">
                     <h6 class="mb-0 font600">User Id</h6>
@@ -19,7 +19,7 @@
         <div class="card-body">
             <div class="widgets1">
                 <div class="icon">
-                    <i class="fa fa-braille text-danger font-30"></i>
+                    <i class="fa fa-address-card text-danger font-30"></i>
                 </div>
                 <div class="details">
                     <h6 class="mb-0 font600">Name</h6>
@@ -33,7 +33,7 @@
         <div class="card-body">
             <div class="widgets1">
                 <div class="icon">
-                    <i class="fa fa-braille text-danger font-30"></i>
+                    <i class="fa fa-book text-danger font-30"></i>
                 </div>
                 <div class="details">
                     <h6 class="mb-0 font600">Username</h6>
@@ -42,32 +42,37 @@
             </div>
         </div>
     </div>
-    <hr class="solid" >
-    <div class="card">
-        <div class="card-body">
-            <div class="widgets1">
-                <div class="icon">
-                    <i class="fa fa-braille text-danger font-30"></i>
-                </div>
-                <div class="details">
-                    <h6 class="mb-0 font600">Phone Number</h6>
-                    <span class="mb-0">{{PhoneNumber}}</span>
+    <div  *ngIf="PhoneNumber">
+        <hr class="solid" >
+        <div class="card">
+            <div class="card-body">
+                <div class="widgets1">
+                    <div class="icon">
+                        <i class="fa fa-address-book text-danger font-30"></i>
+                    </div>
+                    <div class="details">
+                        <h6 class="mb-0 font600">Phone Number</h6>
+                        <span class="mb-0">{{PhoneNumber}}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <hr class="solid" >
-    <div class="card">
-        <div class="card-body">
-            <div class="widgets1">
-                <div class="icon">
-                    <i class="fa fa-braille text-danger font-30"></i>
-                </div>
-                <div class="details">
-                    <h6 class="mb-0 font600">Email</h6>
-                    <span class="mb-0">{{Email}}</span>
+    <div  *ngIf="Email" >
+        <hr class="solid" >
+        <div class="card">
+            <div class="card-body">
+                <div class="widgets1">
+                    <div class="icon">
+                        <i class="fa fa-internet-explorer text-danger font-30"></i>
+                    </div>
+                    <div class="details">
+                        <h6 class="mb-0 font600">Email</h6>
+                        <span class="mb-0">{{Email}}</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+    
